@@ -7,32 +7,30 @@ import java.net.Socket;
 
 public class Cliente {
 
-    // Streams como atributos da classe
     private ObjectOutputStream output;
     private ObjectInputStream input;
-    private Socket socket; // Armazena o socket
+    private Socket socket;
 
-    // Construtor para iniciar a conexão e os streams
+    // Inicia a conexão e os streams
     public void iniciar(String host, int porta) throws IOException {
         this.socket = new Socket(host, porta);
-        // Crie os streams UMA ÚNICA VEZ
         this.output = new ObjectOutputStream(socket.getOutputStream());
         this.input = new ObjectInputStream(socket.getInputStream());
     }
 
-    // Métodos agora usam os atributos da classe, sem receber o socket como parâmetro
-    // E, crucialmente, SEM fechar os streams
+    // Recebe String do servidor
     public String inputString() {
         try {
             String mensagem = input.readUTF();
-            System.out.println(mensagem); // Imprime a mensagem recebida para o usuário ver
+            System.out.println(mensagem); 
             return mensagem;
         } catch (IOException e) {
             System.out.println("Erro de comunicação (servidor pode ter sido encerrado): " + e.getMessage());
-            return null; // Indica que a comunicação falhou
+            return null; 
         }
     }
 
+    // Envia String ao servidor
     public void outputString(String saida) {
         try {
             output.writeUTF(saida);
@@ -42,6 +40,7 @@ public class Cliente {
         }
     }
 
+    // Envia int ao servidor
     public void outputInt(int saida) {
         try {
             output.writeInt(saida);
@@ -51,7 +50,7 @@ public class Cliente {
         }
     }
     
-    // Método para fechar tudo no final
+    // Fecha tudo no final
     public void fecharConexao() throws IOException {
         if (output != null) output.close();
         if (input != null) input.close();

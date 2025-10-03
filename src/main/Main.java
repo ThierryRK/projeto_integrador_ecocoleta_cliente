@@ -6,22 +6,22 @@ import cliente.Cliente;
 
 public class Main {
 
-    public static void main(String[] args) { // Remova 'throws IOException' daqui
+    public static void main(String[] args) { 
 
         Cliente cliente = new Cliente();
         Scanner teclado = new Scanner(System.in);
 
         try {
+        	// Inicia a conexão e streams
             System.out.println("Estabelecendo conexão...");
-            cliente.iniciar("localhost", 55555); // Inicia conexão e streams
+            cliente.iniciar("localhost", 55555); 
             System.out.println("Conexão estabelecida!");
 
             int cursor;
-            String entradaString;
 
             // Loop principal de comunicação
             do {
-                // O servidor envia 4 mensagens de menu
+                // O cliente recebe as 4 mensagens do menu
                 cliente.inputString(); 
                 cliente.inputString(); 
                 cliente.inputString(); 
@@ -40,10 +40,10 @@ public class Main {
 			switch (cursor) {
 			case 1:
 				do {
+					// Cliente recebe uma lista de locais em String (resíduo plástico)
 					cliente.inputString();
-					//saida
 					cliente.inputString();
-					//entrada
+					// Entrada para voltar ao menu ("Digite 0 para voltar.")
 					cursor = teclado.nextInt();
 					teclado.nextLine();
 					cliente.outputInt(cursor);
@@ -51,10 +51,10 @@ public class Main {
 				break;
 			case 2:
 				do {
+					// Cliente recebe uma lista de locais em String (resíduo metal)
 					cliente.inputString();
-					//saida
 					cliente.inputString();
-					//entrada
+					// Entrada para voltar ao menu ("Digite 0 para voltar.")
 					cursor = teclado.nextInt();
 					teclado.nextLine();
 					cliente.outputInt(cursor);
@@ -62,10 +62,10 @@ public class Main {
 				break;
 			case 3:
 				do {
+					// Cliente recebe uma lista de locais em String (resíduo papel)
 					cliente.inputString();
-					//saida
 					cliente.inputString();
-					//entrada
+					// Entrada para voltar ao menu ("Digite 0 para voltar.")
 					cursor = teclado.nextInt();
 					teclado.nextLine();
 					cliente.outputInt(cursor);
@@ -73,17 +73,16 @@ public class Main {
 				break;
 			case 4:
 				do {
+					// Cliente recebe uma lista de locais em String (resíduo vidro)
 					cliente.inputString();
-					//saida
 					cliente.inputString();
-					//entrada
+					// Entrada para voltar ao menu ("Digite 0 para voltar.")
 					cursor = teclado.nextInt();
 					teclado.nextLine();
 					cliente.outputInt(cursor);
 				}while (cursor != 0);
 				break;
 			case 5:
-				//saida
 				cliente.inputString();
 				break;
 			case 123456:
@@ -91,73 +90,57 @@ public class Main {
 				String endereco;
 				String residuo;
 				do {
-					//saida
+					// Cliente recebe o menu do ADM
 					cliente.inputString();
 					cliente.inputString();
 					cliente.inputString();
-					//entrada
+					// Entrada para escolha das ações
 					cursor = teclado.nextInt();
 					teclado.nextLine();
 					cliente.outputInt(cursor);
 					switch (cursor) {
 					case 1:
-						//saida
+						//Inserindo no banco de dados
 						cliente.inputString();
-						//entrada
 						nome = teclado.nextLine();
 						cliente.outputString(nome);
-						//saida
 						cliente.inputString();
-						//entrada
 						endereco = teclado.nextLine();
 						cliente.outputString(endereco);
-						//saida
 						cliente.inputString();
-						//entrada
-						residuo = teclado.nextLine();
+						residuo = teclado.nextLine().toLowerCase();						
 						cliente.outputString(residuo);
-						//saida
 						cliente.inputString();
 						break;
 						
 					case 2:
-						//saida
+						//Apagando no banco de dados
 						cliente.inputString();
-						//entrada
 						nome = teclado.nextLine();
 						cliente.outputString(nome);
-						//saida
 						cliente.inputString();
 						break;
 						
 					case 3:
 						String nomeAtual;
-						//saida
+						//Editando no banco de dados
 						cliente.inputString();
-						//entrada
 						nomeAtual = teclado.nextLine();
 						cliente.outputString(nomeAtual);
-						//saida
 						cliente.inputString();
-						//entrada
 						nome = teclado.nextLine();
 						cliente.outputString(nome);
-						//saida
 						cliente.inputString();
-						//entrada
 						endereco = teclado.nextLine();
 						cliente.outputString(endereco);
-						//saida
 						cliente.inputString();
-						//entrada
-						residuo = teclado.nextLine();
+						residuo = teclado.nextLine().toLowerCase();
 						cliente.outputString(residuo);
-						//saida
 						cliente.inputString();
 						break;
 						
 					case 4:
-						//saida
+						//Saindo do menu do ADM
 						cliente.inputString();
 						break;
 					}
@@ -180,4 +163,3 @@ public class Main {
         }
     }
 }
-
