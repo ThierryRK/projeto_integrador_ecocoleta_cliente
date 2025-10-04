@@ -143,9 +143,13 @@ public class Main {
 						//Saindo do menu do ADM
 						cliente.inputString();
 						break;
+					default:
+		                cliente.inputString();
 					}
 				}while (cursor != 4);
 				break;
+			default:
+                cliente.inputString();
 			} 
             } while (true); // O loop é controlado pela opção '5'
 
